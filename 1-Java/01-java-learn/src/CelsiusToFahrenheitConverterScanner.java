@@ -10,7 +10,7 @@ public class CelsiusToFahrenheitConverterScanner {
 		float fahrenheit = (celsius * 9 / 5f) + 32;
 		
 		System.out.println("Fahrenheit = " + fahrenheit);
-
+		System.out.println(scanner);
 	}
 
 }
