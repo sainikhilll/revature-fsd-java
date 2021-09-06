@@ -12,10 +12,10 @@ public class StreamExample {
 
 	public static void main(String[] args) {
 		Person person1 = new Person(1,"Nik",20);
-		Person person2 = new Person(2,"Sai",20);
-		Person person3 = new Person(3,"VB",20);
-		Person person4 = new Person(4,"Prashanth",20);
-		Person person5 = new Person(5,"Harsha",20);
+		Person person2 = new Person(2,"Sai",21);
+		Person person3 = new Person(3,"VB",22);
+		Person person4 = new Person(4,"Prashanth",23);
+		Person person5 = new Person(5,"Harsha",24);
 		
 		List<Person> personList = new ArrayList<>();
 		
@@ -33,7 +33,8 @@ public class StreamExample {
 		long id = scanner.nextLong();
 		
 		System.out.println(personList.stream().filter(l -> l.getId() == id).collect(Collectors.toList()));
-		
+		double averageAge = personList.stream().map(l -> l.getAge()).reduce(0,(sum,i) -> (sum+i)/personList.size());
+		System.out.println(averageAge);
 	}
 
 }
