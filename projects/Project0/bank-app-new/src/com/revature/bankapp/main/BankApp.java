@@ -1,4 +1,4 @@
-package com.revatue.bankapp.main;
+package com.revature.bankapp.main;
 
 import com.revature.bankapp.menu.CustomerMenu;
 import com.revature.bankapp.menu.MainMenu;
