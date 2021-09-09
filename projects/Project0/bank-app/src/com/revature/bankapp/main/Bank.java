@@ -1,4 +1,4 @@
-package com.revature.app.bank;
+package com.revature.bankapp.main;
 
 import java.util.Scanner;
 
@@ -7,9 +7,10 @@ public class Bank {
 	public static void printMenu() {
 		System.out.println("  Welcome to ABC Bank");
 		System.out.println("========================");
-		System.out.println("1. Customer Login");
-		System.out.println("2. Employee Login");
-		System.out.println("3. Exit");
+		System.out.println("1. Registration");
+		System.out.println("2. Customer Login");
+		System.out.println("3. Employee Login");
+		System.out.println("4. Exit");
 		System.out.println("========================");
 	}
 
@@ -18,22 +19,25 @@ public class Bank {
 
 		Scanner scanner = new Scanner(System.in);
 
-		while (choice != 3) {
+		while (choice != 4) {
 			printMenu();
-			System.out.print("Enter Your Choice : ");
-			choice = scanner.nextInt();
+			
 
 			switch (choice) {
 			case 1:
-				System.out.println();
+				System.out.println("Thanks for choosing our Bank");
+				BankMain bankMain = new BankMain();
+				bankMain.collectingDetails();
+				printMenu();
+			case 2:
 				System.out.println("Thanks for choosing our Bank");
 				CustomerLogin customerLogin = new CustomerLogin();
-				 customerLogin.diaplayCutsomerMenuAndAuthentication();
-				break;
-			case 2:
-				System.out.println("Employee login under Creation");
+				customerLogin.diaplayCutsomerMenuAndAuthentication();
 				break;
 			case 3:
+				System.out.println("Employee login under Creation");
+				break;
+			case 4:
 				System.out.println("Exiting");
 				break;
 

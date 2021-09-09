@@ -1,4 +1,4 @@
-package com.revature.app.bank;
+package com.revature.bankapp.main;
 
 public class Account {
 	private long id;

@@ -1,13 +1,19 @@
-package com.revature.app.bank;
+package com.revature.bankapp.main;
 
 import java.util.Scanner;
+
+import com.revature.bankapp.data.DataManager;
+import com.revature.bankapp.model.Customer;
 
 public class CustomerLogin {
 	private static String loginID;
 	private static String password;
 
 	public static boolean authentication(String iD, String pd) {
-		if (iD.equals("john") && pd.equals("1111")) {
+		DataManager dataManager = new DataManager();
+		Customer customer = new Customer();
+		
+		if (dataManager.customerDetailsList.get(0).getMailId().equals(iD)&& dataManager.customerDetailsList.get(0).getPassword().equals(pd)) {
 			return true;
 		} else {
 			return false;
