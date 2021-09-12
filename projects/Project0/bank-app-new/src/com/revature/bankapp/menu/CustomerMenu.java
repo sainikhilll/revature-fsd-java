@@ -29,8 +29,8 @@ public class CustomerMenu extends Menu {
 			break;
 		case 2:
 			System.out.println("These are Your Accounts");
-			DataManager.getAccountDetails();
-			DataManager.selectAccount();
+			Customer.getAccountDetails();
+			Customer.selectAccount();
 			TransactionMenu transactionMenu = new TransactionMenu("Transactrion Menu");
 			transactionMenu.displayMenuAndCaptureSelection();
 			break;

@@ -3,6 +3,7 @@ package com.revature.bankapp.form;
 import java.util.Scanner;
 
 import com.revature.bankapp.model.Account;
+import com.revature.bankapp.model.Customer;
 import com.revature.bankapp.model.DataManager;
 
 public class AccountRegistrationForm extends Form{
@@ -22,7 +23,7 @@ public class AccountRegistrationForm extends Form{
 		System.out.print("Enter starting balance : ");
 		long balance = scanner.nextLong();
 		
-		DataManager.addAccount(new Account(name,branch,balance));		
+		Customer.addAccount(new Account(name,branch,balance));	
 	}
 
 	@Override

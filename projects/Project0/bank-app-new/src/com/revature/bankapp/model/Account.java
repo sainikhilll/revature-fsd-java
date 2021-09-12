@@ -7,11 +7,14 @@ public class Account {
 	private String branch;
 	private long balance;
 	private long counter = 55664;
+	private int idCounter;
 
 	
 	public Account( String name, String branch, long balance) {
 		super();
 		counter++;
+		idCounter++;
+		this.id = idCounter;
 		this.accountNumber = counter;
 		this.name = name;
 		this.branch = branch;

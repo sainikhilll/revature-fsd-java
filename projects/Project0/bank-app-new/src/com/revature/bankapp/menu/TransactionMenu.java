@@ -1,5 +1,6 @@
 package com.revature.bankapp.menu;
 
+import com.revature.bankapp.model.Customer;
 import com.revature.bankapp.model.DataManager;
 
 public class TransactionMenu extends Menu {
@@ -18,17 +19,17 @@ public class TransactionMenu extends Menu {
 		switch (selection) {
 		case 1:
 			System.out.println("withDrawal granted");
-			DataManager.withdrawl();
+			Customer.withdrawl();
 			displayMenuAndCaptureSelection();
 			break;
 		case 2:
 			System.out.println("Deposit Granted");
-			DataManager.deposit();
+			Customer.deposit();
 			displayMenuAndCaptureSelection();
 			break;
 		case 3:
 			System.out.println("View Balance");
-			DataManager.getAccountBalance();
+			Customer.getAccountBalance();
 			displayMenuAndCaptureSelection();
 			break;
 		case 4:
