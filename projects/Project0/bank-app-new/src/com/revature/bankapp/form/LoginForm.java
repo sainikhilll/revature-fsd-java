@@ -2,6 +2,7 @@ package com.revature.bankapp.form;
 
 import java.util.Scanner;
 
+import com.revature.bankapp.menu.CustomerMenu;
 import com.revature.bankapp.model.Customer;
 import com.revature.bankapp.model.DataManager;
 
@@ -34,6 +35,8 @@ public class LoginForm extends Form {
 			success = true;
 			System.out.println("Login Successful");
 			System.out.println("Welcome " + customer.getFirstName());
+			CustomerMenu customerMenu = new CustomerMenu("Customer Menu");
+			customerMenu.displayMenuAndCaptureSelection();
 
 		} else  {
 			System.out.println("Invalid Password or Email");
