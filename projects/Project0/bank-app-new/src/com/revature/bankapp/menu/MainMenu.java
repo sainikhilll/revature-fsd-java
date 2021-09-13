@@ -38,6 +38,7 @@ public class MainMenu extends Menu {
 		case 2 :
 			LoginForm loginForm = new LoginForm("Customer registration form");
 			loginForm.captureDataAndPerformAction();
+			displayMenuAndCaptureSelection();
 			break;
 		case 3 :
 			System.out.println("Welcome Back!!!");

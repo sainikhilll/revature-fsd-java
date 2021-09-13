@@ -29,7 +29,7 @@ public class CustomerMenu extends Menu {
 			break;
 		case 2:
 			System.out.println("These are Your Accounts");
-			Customer.getAccountDetails();
+			System.out.println(Customer.getAccountList());
 			Customer.selectAccount();
 			TransactionMenu transactionMenu = new TransactionMenu("Transactrion Menu");
 			transactionMenu.displayMenuAndCaptureSelection();

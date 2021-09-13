@@ -8,11 +8,12 @@ import com.revature.bankapp.menu.TransactionMenu;
 
 public class DataManager {
 	private static List<Customer> customerList = new ArrayList<>();
-	private static List<Account> accountList = new ArrayList<Account>();
+	// private static List<Account> accountList = new ArrayList<Account>();
 	private static int choice;
+	private static Customer currentCustomer;
 	static {
-		customerList.add(new Customer("Sai", "Nikhil", "nani", "1111"));
-		
+		customerList.add(new Customer("Sai", "Nikhil", "nani", "1111",Customer.createAccountList()));
+
 	}
 
 	public static void addCustomer(Customer customer) {
@@ -27,6 +28,24 @@ public class DataManager {
 		}
 		return null;
 	}
+
+//	public static Customer gettCurrentCustomer(String email) {
+//		for (Customer customer : customerList) {
+//			if (customer.getEmail().equals(email)) {
+//				return customer;
+//			}
+//		}return null;
+//	}
+
+	public static Customer getCurrentCustomer() {
+		return currentCustomer;
+	}
+
+	public static void setCurrentCustomer(Customer currentCustomer) {
+		DataManager.currentCustomer = currentCustomer;
+	}
+
+	
 //	public static void addAccount(Account account) {
 //		accountList.add(account);
 //	}

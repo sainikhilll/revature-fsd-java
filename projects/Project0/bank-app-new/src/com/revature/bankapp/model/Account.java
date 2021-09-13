@@ -54,8 +54,8 @@ public class Account {
 	}
 
 
-	public void setBalance(int balance) {
-		this.balance = balance;
+	public void setBalance(long l) {
+		this.balance = l;
 	}
 
 	@Override

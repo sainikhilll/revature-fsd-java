@@ -26,7 +26,9 @@ public class CustomerRegistrationForm extends Form{
 		System.out.print("Setup password:");
 		String password = scanner.nextLine();
 		
-		DataManager.addCustomer(new Customer(firstName, lastName, email, password));
+		
+		
+		DataManager.addCustomer(new Customer(firstName, lastName, email, password,Customer.createAccountList()));
 		
 	}
 
