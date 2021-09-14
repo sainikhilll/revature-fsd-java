@@ -34,6 +34,8 @@ public class TransactionMenu extends Menu {
 			break;
 		case 4:
 			System.out.println("View Treansaction Log");
+			System.out.println(Customer.getCurrentAccount().getTransactionList());
+			displayMenuAndCaptureSelection();
 			break;
 		case 5:
 			break;

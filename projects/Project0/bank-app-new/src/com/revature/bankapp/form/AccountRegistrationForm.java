@@ -23,7 +23,7 @@ public class AccountRegistrationForm extends Form{
 		System.out.print("Enter starting balance : ");
 		long balance = scanner.nextLong();
 		
-		Customer.addAccount(new Account(name,branch,balance));	
+		Customer.addAccount(new Account(name,branch,balance,Account.createTransactionList()));	
 	}
 
 	@Override
