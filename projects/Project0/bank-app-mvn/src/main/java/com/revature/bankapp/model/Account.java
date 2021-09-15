@@ -83,7 +83,7 @@ public class Account {
 
 
 	public static ArrayList<String> createTransactionList(){
-		ArrayList<String> list = new ArrayList<>();
+		ArrayList<String> list = new ArrayList<String>();
 		return list;
 	}
 	public static void addTransaction(String s) {

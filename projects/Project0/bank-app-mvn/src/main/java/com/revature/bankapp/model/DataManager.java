@@ -7,7 +7,7 @@ import java.util.Scanner;
 import com.revature.bankapp.menu.TransactionMenu;
 
 public class DataManager {
-	private static List<Customer> customerList = new ArrayList<>();
+	private static List<Customer> customerList = new ArrayList<Customer>();
 	// private static List<Account> accountList = new ArrayList<Account>();
 	private static int choice;
 	private static Customer currentCustomer;

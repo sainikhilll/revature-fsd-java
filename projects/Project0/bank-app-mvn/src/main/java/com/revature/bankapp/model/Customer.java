@@ -28,7 +28,7 @@ public class Customer {
 		// map.put((long) 102,new Account("Venkat","Balaji Colony",6000));
 	}
 	
-	public Customer(String firstName, String lastName, String email, String passowrd, ArrayList<Account> accountList) {
+	public Customer(String firstName, String lastName, String email, String passowrd) {
 		super();
 		counter++;
 		this.id = counter;
@@ -126,7 +126,7 @@ public class Customer {
 	}
 
 	public static ArrayList<Account> createAccountList() {
-		ArrayList<Account> list = new ArrayList<>();
+		ArrayList<Account> list = new ArrayList<Account>();
 		return list;
 	}
 
