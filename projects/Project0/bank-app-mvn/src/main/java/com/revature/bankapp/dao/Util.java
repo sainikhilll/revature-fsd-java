@@ -16,6 +16,6 @@ public class Util {
 		return DriverManager.getConnection(
 				"jdbc:mysql://localhost:3306/bank"
 				, "root"
-				, "11716042");
+				, "");
 	}
 }

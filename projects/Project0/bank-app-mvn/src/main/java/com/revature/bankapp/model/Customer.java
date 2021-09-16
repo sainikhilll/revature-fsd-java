@@ -30,8 +30,7 @@ public class Customer {
 	
 	public Customer(String firstName, String lastName, String email, String passowrd) {
 		super();
-		counter++;
-		this.id = counter;
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -128,6 +127,14 @@ public class Customer {
 	public static ArrayList<Account> createAccountList() {
 		ArrayList<Account> list = new ArrayList<Account>();
 		return list;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

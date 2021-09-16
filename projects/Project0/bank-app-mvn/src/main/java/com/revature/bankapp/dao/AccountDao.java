@@ -5,5 +5,5 @@ import java.sql.SQLException;
 import com.revature.bankapp.model.Account;
 
 public interface AccountDao {
-	void create(Account account) throws SQLException;
+	void create(Account account, long cust_id) throws SQLException;
 }

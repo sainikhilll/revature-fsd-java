@@ -40,7 +40,7 @@ public class CustomerDaoImpl implements CustomerDao {
 				String psw = resultSet.getString("password");
 
 				customer = new Customer(fn, ln, em, psw);
-				connection.close();
+				
 			}
 		}
 		return customer;
