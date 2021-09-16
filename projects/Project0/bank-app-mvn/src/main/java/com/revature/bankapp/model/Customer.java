@@ -11,7 +11,6 @@ public class Customer {
 	private String passowrd;
 	private static long counter = 0;
 	private  ArrayList<Account> accountList;
-	private static int choice;
 	
 	private static Account currentAccount;
 
@@ -30,7 +29,6 @@ public class Customer {
 	
 	public Customer(String firstName, String lastName, String email, String passowrd) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -72,62 +70,63 @@ public class Customer {
 		return email;
 	}
 
-	public static void selectAccount() {
+	public static long selectAccount() {
 		System.out.print("Select account to perform transaction : ");
 		Scanner scanner = new Scanner(System.in);
-		choice = scanner.nextInt();
-	    Customer.setCurrentAccount(DataManager.getCurrentCustomer().getAccountList().get(choice-1));
-	    System.out.println(Customer.getCurrentAccount());
-		if (choice <= 0 && choice > DataManager.getCurrentCustomer().getAccountList().size()) {
-			System.out.println("Choose valid Account");
-			selectAccount();
-		}
+		long choice = scanner.nextInt();
+//	    Customer.setCurrentAccount(DataManager.getCurrentCustomer().getAccountList().get(choice-1));
+//	    System.out.println(Customer.getCurrentAccount());
+//		if (choice <= 0 && choice > DataManager.getCurrentCustomer().getAccountList().size()) {
+//			System.out.println("Choose valid Account");
+//			selectAccount();
+//		}
 
 		// performTransaction();
+		return choice;
 	}
 
-	public static void withdrawl() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter amount to withdraw : ");
-		long withdrwalAmount = scanner.nextLong();
-		if (withdrwalAmount <= 0) {
-			System.out.println("You cannot withdraw negative amount");
-		} else if (DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance() >= withdrwalAmount) {
-			DataManager.getCurrentCustomer().getAccountList().get(choice-1).setBalance(
-					DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance() - withdrwalAmount);
-			System.out.println(
-					" Balance : " + DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance());
-			Account.addTransaction(withdrwalAmount+"  is debited from your account.");
-		} else {
-			System.out.println("Insuuficient Funds");
-			System.out.println(
-					" Balance : " + DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance());
-		}
-	}
-
-//	public static void getAccountDetails() {
-//		Customer cus = DataManager.getCurrentCustomer();
-//		cus.getAccountList();
+//	public static void withdrawl() {
+//		Scanner scanner = new Scanner(System.in);
+//		System.out.print("Enter amount to withdraw : ");
+//		long withdrwalAmount = scanner.nextLong();
+//		if (withdrwalAmount <= 0) {
+//			System.out.println("You cannot withdraw negative amount");
+//		} else if (DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance() >= withdrwalAmount) {
+//			DataManager.getCurrentCustomer().getAccountList().get(choice-1).setBalance(
+//					DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance() - withdrwalAmount);
+//			System.out.println(
+//					" Balance : " + DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance());
+//			Account.addTransaction(withdrwalAmount+"  is debited from your account.");
+//		} else {
+//			System.out.println("Insuuficient Funds");
+//			System.out.println(
+//					" Balance : " + DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance());
+//		}
 //	}
-
-	public static void getAccountBalance() {
-		System.out.println("Balance :" + DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance());
-	}
-
-	public static void deposit() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter amount to deposit: ");
-		long depositAmount = scanner.nextLong();
-		DataManager.getCurrentCustomer().getAccountList().get(choice-1)
-				.setBalance(DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance() + depositAmount);
-		System.out.println("Balance :" + DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance());
-		Account.addTransaction(depositAmount+"  is credited to your account");
-	}
-
-	public static ArrayList<Account> createAccountList() {
-		ArrayList<Account> list = new ArrayList<Account>();
-		return list;
-	}
+//
+////	public static void getAccountDetails() {
+////		Customer cus = DataManager.getCurrentCustomer();
+////		cus.getAccountList();
+////	}
+//
+//	public static void getAccountBalance() {
+//		System.out.println("Balance :" + DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance());
+//	}
+//
+//	public static void deposit() {
+//		Scanner scanner = new Scanner(System.in);
+//		System.out.print("Enter amount to deposit: ");
+//		long depositAmount = scanner.nextLong();
+//		DataManager.getCurrentCustomer().getAccountList().get(choice-1)
+//				.setBalance(DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance() + depositAmount);
+//		System.out.println("Balance :" + DataManager.getCurrentCustomer().getAccountList().get(choice-1).getBalance());
+//		Account.addTransaction(depositAmount+"  is credited to your account");
+//	}
+//
+//	public static ArrayList<Account> createAccountList() {
+//		ArrayList<Account> list = new ArrayList<Account>();
+//		return list;
+//	}
 
 	public long getId() {
 		return id;

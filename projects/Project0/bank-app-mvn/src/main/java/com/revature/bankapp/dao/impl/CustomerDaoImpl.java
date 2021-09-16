@@ -38,8 +38,9 @@ public class CustomerDaoImpl implements CustomerDao {
 				String ln = resultSet.getString("last_name");
 				String em = resultSet.getString("email");
 				String psw = resultSet.getString("password");
-
+				long id = resultSet.getInt("customer_id");
 				customer = new Customer(fn, ln, em, psw);
+				customer.setId(id);
 				
 			}
 		}

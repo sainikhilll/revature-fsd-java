@@ -3,7 +3,7 @@ package com.revature.bankapp.model;
 import java.util.ArrayList;
 
 public class Account {
-	private long id;
+	private long accountId;
 	private long accountNumber;
 	private String name;
 	private String branch;
@@ -14,20 +14,21 @@ public class Account {
 
 
 
-	public Account(String name, String branch, long balance, ArrayList<String> transactionList) {
+	public Account(String name, String branch, long balance) {
 	super();
 	this.name = name;
 	this.branch = branch;
 	this.balance = balance;
-	this.transactionList = transactionList;
-}
-
-
 	
-	public static int incrementer(int idCounter) {
-		idCounter = idCounter+1;
-		return idCounter;
-	}
+}
+		public Account() {}
+
+
+//	
+//	public static int incrementer(int idCounter) {
+//		idCounter = idCounter+1;
+//		return idCounter;
+//	}
 
 
 
@@ -86,6 +87,12 @@ public class Account {
 		ArrayList<String> list = new ArrayList<String>();
 		return list;
 	}
+	public long getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(long accountId) {
+		this.accountId = accountId;
+	}
 	public static void addTransaction(String s) {
 	 Customer.getCurrentAccount().getTransactionList().add(s);
 	}
@@ -93,8 +100,7 @@ public class Account {
 	
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", accountNumber=" + accountNumber + ", name=" + name + ", branch=" + branch
-				+ ", balance=" + balance + "]";
+		return "id=" + accountId +  "balance=" + balance ;
 }
 	
 

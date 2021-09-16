@@ -1,10 +1,11 @@
 package com.revature.bankapp.form;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.revature.bankapp.dao.impl.AccountDaoImpl;
 import com.revature.bankapp.model.Account;
-import com.revature.bankapp.model.Customer;
-import com.revature.bankapp.model.DataManager;
+import com.revature.bankapp.model.DatabaseManager;
 
 public class AccountRegistrationForm extends Form{
 
@@ -23,7 +24,13 @@ public class AccountRegistrationForm extends Form{
 		System.out.print("Enter starting balance : ");
 		long balance = scanner.nextLong();
 		
-		Customer.addAccount(new Account(name,branch,balance,Account.createTransactionList()));	
+		AccountDaoImpl accountDaoImpl = new AccountDaoImpl();
+		try {
+			accountDaoImpl.create(new Account(name,branch,balance), DatabaseManager.getCurrentCustomer().getId());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

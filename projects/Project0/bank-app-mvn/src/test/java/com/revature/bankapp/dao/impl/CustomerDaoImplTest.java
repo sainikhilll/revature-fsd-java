@@ -18,6 +18,7 @@ class CustomerDaoImplTest {
 			dao.create(customer);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			fail ("Customer not created");
 			e.printStackTrace();
 		}
 	}
