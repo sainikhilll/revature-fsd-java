@@ -10,6 +10,7 @@ import java.util.List;
 import com.revature.bankapp.dao.AccountDao;
 import com.revature.bankapp.dao.Util;
 import com.revature.bankapp.model.Account;
+import com.revature.bankapp.model.DatabaseManager;
 
 public class AccountDaoImpl implements AccountDao {
 
@@ -31,14 +32,16 @@ public class AccountDaoImpl implements AccountDao {
 	public List<Account> showAccounts() throws SQLException {
 		List<Account> accountList = new ArrayList<>();
 		try(Connection connection = Util.getConnection()){
-			String sql = "select a.account_id, a.balance from customer c inner join account a on c.customer_id=a.cust_id";
+			long cust = DatabaseManager.getCurrentCustomer().getId();
+			String sql = "select account_id, balance from account  where cust_id=(?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, (int)cust);
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
 				Account account = new Account();
-				account.setAccountId(rs.getInt("a.account_id"));
-				account.setBalance(rs.getInt("a.balance"));
+				account.setAccountId(rs.getInt("account_id"));
+				account.setBalance(rs.getInt("balance"));
 				
 				accountList.add(account);
 			}

@@ -34,6 +34,7 @@ public class CustomerMenu extends Menu {
 		case 2:
 			System.out.println("These are Your Accounts");
 			//System.out.println(DataManager.getCurrentCustomer().getAccountList());
+			//long cust = DatabaseManager.getCurrentCustomer().getId();
 			AccountDaoImpl accountDaoImpl = new AccountDaoImpl();
 			try {
 				ArrayList<Account>accountList=(ArrayList<Account>) accountDaoImpl.showAccounts();
