@@ -1,6 +1,8 @@
 package com.revature.bankapp.model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.bankapp.dao.impl.TransactionDaoImpl;
@@ -56,42 +58,113 @@ public class DatabaseManager {
 		if (currentBalance >= amount) {
 			try {
 				transactionDaoImpl.performWithdrawl(accountNo, currentBalance - amount);
+				
+				transactionDaoImpl.addTransaction(accountNo, "Withdrwal", amount);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		}else if(amount < 0){
+		} else if (amount < 0) {
 			System.out.println("Enter Valid Amount");
-		}
-		else {
+		} else {
 			System.out.println("Insufficient Funds");
 		}
 
 	}
-	
+
 	public static void deposit() {
 		System.out.print("Enter amount to deposit : ");
 		Scanner sc = new Scanner(System.in);
 		long amount = sc.nextLong();
 		long accountNo = DatabaseManager.getCurrentAccountId();
 		TransactionDaoImpl transactionDaoImpl = new TransactionDaoImpl();
-		long currentBalance= 0;
-		
+		long currentBalance = 0;
+
+		try {
+			currentBalance = transactionDaoImpl.showBalance(accountNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (amount > 0) {
 			try {
-				currentBalance = transactionDaoImpl.showBalance(accountNo);
+				transactionDaoImpl.performDeposit(accountNo, currentBalance + amount);
+				
+				transactionDaoImpl.addTransaction(accountNo, "Deposit", amount);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if(amount > 0) {
-				try {
-					transactionDaoImpl.performDeposit(accountNo, currentBalance+amount);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}else {
-				System.out.println("Enter valid amount");
+		} else {
+			System.out.println("Enter valid amount");
+		}
+	}
+
+	public static void transfer() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter account Id to which you want to transfer funds");
+		long toAccountId = sc.nextLong();
+		System.out.println("Enter Amount to transafer");
+		long amount = sc.nextLong();
+		long fromAccountId = DatabaseManager.getCurrentAccountId();
+
+		TransactionDaoImpl transactionDaoImpl = new TransactionDaoImpl();
+		long currentBalanceOfFromAccount = 0;
+		long currentBalanceOfToAccount = 0;
+
+		try {
+			currentBalanceOfFromAccount = transactionDaoImpl.showBalance(fromAccountId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			currentBalanceOfToAccount = transactionDaoImpl.showBalance(toAccountId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (amount <= 0) {
+			System.out.println("Enter Valid amount ");
+		} else if (amount >= 0 && currentBalanceOfFromAccount >= amount) {
+			try {
+				transactionDaoImpl.performDeposit(toAccountId, currentBalanceOfToAccount + amount);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			try {
+				transactionDaoImpl.performWithdrawl(fromAccountId, currentBalanceOfFromAccount - amount);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				transactionDaoImpl.addTransaction(fromAccountId, "Transafer to Account No" + toAccountId, amount);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("enter valid amount");
+		}
+
+	}
+	
+	public static void showTransactionsList(){
+		TransactionDaoImpl transactionDaoImpl = new TransactionDaoImpl();
+		long accountNo = DatabaseManager.getCurrentAccountId();
+		
+		try {
+			ArrayList<Transaction> transactionList = (ArrayList<Transaction>) transactionDaoImpl.showTransactions(accountNo);
+			transactionList.forEach(System.out::println);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 }

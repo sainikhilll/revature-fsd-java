@@ -15,6 +15,10 @@ public class Transaction {
 	public void setMoney(long money) {
 		this.money = money;
 	}
+	@Override
+	public String toString() {
+		return "Type =  " + type + ", Money =  " + money ;
+	}
 	
 	
 	

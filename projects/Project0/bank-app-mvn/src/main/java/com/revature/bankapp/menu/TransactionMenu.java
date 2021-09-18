@@ -15,6 +15,7 @@ public class TransactionMenu extends Menu {
 		addMenuItem("Deposit");
 		addMenuItem("View Balance");
 		addMenuItem("View Transaction Log");
+		addMenuItem("Transafer to another Account");
 		addMenuItem("Back");
 	}
 
@@ -69,11 +70,16 @@ public class TransactionMenu extends Menu {
 			displayMenuAndCaptureSelection();
 			break;
 		case 4:
-			System.out.println("View Treansaction Log");
-			System.out.println(Customer.getCurrentAccount().getTransactionList());
+			long acco = DatabaseManager.getCurrentAccountId();
+			System.out.println("This is account_Id" + acco +"Transaction Log");
+			DatabaseManager.showTransactionsList();
 			displayMenuAndCaptureSelection();
 			break;
 		case 5:
+			System.out.println("Transafer");
+			DatabaseManager.transfer();
+			break;
+		case 6 :
 			break;
 		}
 	}
