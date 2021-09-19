@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.bankapp.dao.impl.EmployeeDaoImpl;
 import com.revature.bankapp.dao.impl.TransactionDaoImpl;
 
 public class DatabaseManager {
@@ -58,7 +59,7 @@ public class DatabaseManager {
 		if (currentBalance >= amount) {
 			try {
 				transactionDaoImpl.performWithdrawl(accountNo, currentBalance - amount);
-				
+
 				transactionDaoImpl.addTransaction(accountNo, "Withdrwal", amount);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
@@ -89,7 +90,7 @@ public class DatabaseManager {
 		if (amount > 0) {
 			try {
 				transactionDaoImpl.performDeposit(accountNo, currentBalance + amount);
-				
+
 				transactionDaoImpl.addTransaction(accountNo, "Deposit", amount);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -140,7 +141,7 @@ public class DatabaseManager {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			try {
 				transactionDaoImpl.addTransaction(fromAccountId, "Transafer to Account No" + toAccountId, amount);
 			} catch (SQLException e) {
@@ -152,19 +153,52 @@ public class DatabaseManager {
 		}
 
 	}
-	
-	public static void showTransactionsList(){
+
+	public static void showTransactionsList() {
 		TransactionDaoImpl transactionDaoImpl = new TransactionDaoImpl();
 		long accountNo = DatabaseManager.getCurrentAccountId();
-		
+
 		try {
-			ArrayList<Transaction> transactionList = (ArrayList<Transaction>) transactionDaoImpl.showTransactions(accountNo);
+			ArrayList<Transaction> transactionList = (ArrayList<Transaction>) transactionDaoImpl
+					.showTransactions(accountNo);
 			transactionList.forEach(System.out::println);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
+
+	public static void showCustList() {
+		EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
+		try {
+			ArrayList<Customer> custList = (ArrayList<Customer>) employeeDaoImpl.showCustomerList();
+			custList.forEach(System.out::println);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static long employeeSelect() {
+		System.out.print("Select account to view Transaction List : ");
+		Scanner scanner = new Scanner(System.in);
+		long choice = scanner.nextInt();
+		return choice;
+	}
+	
+	public static void employeeViewTransactionList(long accountId) {
+		EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
+		List<Transaction> transactionList = new ArrayList<>();
+		try {
+			transactionList = employeeDaoImpl.showTransList(accountId);
+			transactionList.forEach(System.out::println);
+			 
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

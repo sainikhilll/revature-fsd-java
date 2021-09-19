@@ -1,6 +1,7 @@
 package com.revature.bankapp.model;
 
 public class Transaction {
+	private long id;
 	private String type;
 	private long money;
 	public String getType() {
@@ -15,9 +16,16 @@ public class Transaction {
 	public void setMoney(long money) {
 		this.money = money;
 	}
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
-		return "Type =  " + type + ", Money =  " + money ;
+		return "Transaction id = " + id + ", Type = " + type + ", Money = " + money ;
 	}
 	
 	

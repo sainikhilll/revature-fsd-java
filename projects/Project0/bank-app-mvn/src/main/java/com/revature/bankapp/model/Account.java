@@ -100,7 +100,7 @@ public class Account {
 	
 	@Override
 	public String toString() {
-		return "id=" + accountId +  "balance=" + balance ;
+		return "Account Number = " + accountId +  " Balance = " + balance ;
 }
 	
 

@@ -12,7 +12,7 @@ import com.revature.bankapp.model.Customer;
 public class CustomerDaoImpl implements CustomerDao {
 	public void create(Customer customer) throws SQLException {
 		try (Connection connection = Util.getConnection()) {
-			System.out.println(customer);
+			//System.out.println(customer);
 			String sql = "INSERT INTO customer (first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, customer.getFirstName());

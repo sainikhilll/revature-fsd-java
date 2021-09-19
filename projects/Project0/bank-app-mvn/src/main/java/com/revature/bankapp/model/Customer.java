@@ -10,9 +10,12 @@ public class Customer {
 	private String email;
 	private String passowrd;
 	private static long counter = 0;
+	private Account account;
 	private  ArrayList<Account> accountList;
 	
 	private static Account currentAccount;
+	
+	public Customer() {}
 
 	public static Account getCurrentAccount() {
 		return currentAccount;
@@ -135,6 +138,35 @@ public class Customer {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer_id = " + id + ", FirstName = " + firstName + ", LastName = " + lastName +"   " + account
+				;
+	}
+	
+	
+
 	
 
 }

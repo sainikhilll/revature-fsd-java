@@ -45,6 +45,8 @@ public class LoginForm extends Form {
 				System.out.println("Welcome " + customer.getFirstName());
 				CustomerMenu customerMenu = new CustomerMenu("Customer Menu");
 				customerMenu.displayMenuAndCaptureSelection();
+				
+				success = true;
 
 			} else {
 				System.out.println("Invalid Password or Email");
