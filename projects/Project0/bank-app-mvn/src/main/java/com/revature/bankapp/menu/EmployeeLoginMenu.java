@@ -20,9 +20,13 @@ public class EmployeeLoginMenu extends Menu {
 		switch (selection) {
 		case 1:
 			System.out.println("Approve accounts");
+			DatabaseManager.showAccountListForVerification();
+			displayMenuAndCaptureSelection();
 			break;
 		case 2:
 			System.out.println("Reject Accounts");
+			DatabaseManager.showAccountListToReject();
+			displayMenuAndCaptureSelection();
 			break;
 		case 3:
 			System.out.println("Showing all Accounts");

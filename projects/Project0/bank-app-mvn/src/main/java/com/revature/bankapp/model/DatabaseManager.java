@@ -200,5 +200,49 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void showAccountListForVerification() {
+		EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
+		List<Account> accList = new ArrayList<>();
+		
+		try {
+			accList = employeeDaoImpl.getAccountsToVerify();
+			accList.forEach(System.out::println);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter account number to Approve : ");
+		long account_id = sc.nextLong();
+		try {
+			employeeDaoImpl.approveAccount(account_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void showAccountListToReject() {
+		EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
+		List<Account> accList = new ArrayList<>();
+		
+		try {
+			accList = employeeDaoImpl.getAccountsToVerify();
+			accList.forEach(System.out::println);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter account number to reject : ");
+		long account_id = sc.nextLong();
+		try {
+			employeeDaoImpl.rejectAccount(account_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
