@@ -19,7 +19,7 @@ public class CustomerMenu extends Menu {
 		addMenuItem("View Accounts");
 		addMenuItem("Logout");
 
-		displayMenuAndCaptureSelection();
+		
 	}
 
 	@Override

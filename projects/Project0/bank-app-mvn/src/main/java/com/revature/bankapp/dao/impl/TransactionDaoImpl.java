@@ -88,7 +88,7 @@ public class TransactionDaoImpl implements TransactionDao {
 		
 		try(Connection connection = Util.getConnection()){
 			
-			String sql = "select  transaction_type, amount from transaction where account_id = ?";
+			String sql = "select  transaction_id,transaction_type, amount from transaction where account_id = ?";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, (int) accountId);
@@ -96,6 +96,7 @@ public class TransactionDaoImpl implements TransactionDao {
 			
 			while(rs.next()) {
 				Transaction transaction = new Transaction();
+				transaction.setId(rs.getInt("transaction_id"));
 				transaction.setType(rs.getString("transaction_type"));
 				transaction.setMoney(rs.getInt("amount"));
 				

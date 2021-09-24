@@ -78,6 +78,7 @@ public class TransactionMenu extends Menu {
 		case 5:
 			System.out.println("Transafer");
 			DatabaseManager.transfer();
+			displayMenuAndCaptureSelection();
 			break;
 		case 6 :
 			break;

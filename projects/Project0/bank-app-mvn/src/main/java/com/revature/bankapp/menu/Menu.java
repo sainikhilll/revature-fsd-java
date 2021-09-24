@@ -47,6 +47,7 @@ public abstract class Menu {
 			}
 		}catch(NumberFormatException e){
 			System.out.println("!!!Please enter valid option!!!");
+			displayMenuAndCaptureSelection();
 		}
 	
 	}

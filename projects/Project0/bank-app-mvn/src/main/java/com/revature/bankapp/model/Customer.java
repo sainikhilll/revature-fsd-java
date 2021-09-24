@@ -40,13 +40,13 @@ public class Customer {
 		
 	}
 
-	public static void addAccount(Account account) {
-		DataManager.getCurrentCustomer().getAccountList().add(account);
-	}
-
-	public static ArrayList<Account> getAccountList() {
-		return DataManager.getCurrentCustomer().accountList;
-	}
+//	public static void addAccount(Account account) {
+//		DataManager.getCurrentCustomer().getAccountList().add(account);
+//	}
+//
+//	public static ArrayList<Account> getAccountList() {
+//		return DataManager.getCurrentCustomer().accountList;
+//	}
 
 	
 	public void setAccountList(ArrayList<Account> accountList) {

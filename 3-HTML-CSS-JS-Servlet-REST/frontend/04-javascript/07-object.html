@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Objects</title>
+    </head>
+    <body>
+        <script >
+            var male = {
+                code: "M",
+                name: "Male"
+            };
+            var female = {
+                code: "F",
+                name: "Female"
+            };
+            var employee ={
+                name: "John",
+                gender: male,
+                salary: 100000
+            };
+            var employee1 ={
+                name: "Stella",
+                gender: female,
+                salary: 150000
+            };
+            console.log(employee.name);
+            console.log(employee.gender.name);
+            //console.log(male.code);
+
+            var employees = [employee, employee1];
+            console.log(employees[0].gender.code);
+            console.log(employees[1].gender.code)
+        </script>
+    </body>
+</html>
