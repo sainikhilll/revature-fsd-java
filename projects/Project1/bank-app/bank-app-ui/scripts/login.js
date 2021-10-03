@@ -7,11 +7,21 @@ submitBtn.addEventListener("click", function () { checkLogin(); });
 
 async function checkLogin() {
     let email = form.email.value;
+    let password = form.password.value;
 
     try {
-        let response = await fetch("http://localhost:8080/bank-app-rest/customers/"+email);
+        let response = await fetch("http://localhost:8080/bank-app-rest/customers/"+email+"/"+password);
         let data =  await response.json();
-        console.log(data);
+        if (response.status == 401){
+            console.log("Login successfyul");
+            window.location.href = "Accounts.html";
+        }
+        if(response.status == 500){
+            console.log("Login failed");
+            error.style.display = "block";
+            alert("failed");
+            error.innerText = "Enter Correct Credentials";
+        }
     }
     catch(err) {
          error.style.display = "block";

@@ -11,6 +11,9 @@ let lastNameError = document.getElementById("LastNameError");
 let emailError = document.getElementById("emailError");
 let passwordError = document.getElementById("passwordError");
 
+let firstNameValidError;
+let lastNameValidError;
+
 success.style.display = "none";
 error.style.display = "none";
 
@@ -49,7 +52,7 @@ error.style.display = "none";
         emailError.innerText = "Email is mandatory";
         emailValid = false;
     }
-    else if(!email.value.match(/@{1}.{1}/)){
+    else if(!email.value.match(/[a-z0-9._%+-]+@[a-z0-9.9.-]+\.[a-z]{2,}$/)){
         emailError.innerText="Enter in valid format. Example abc@mail.com";
         emailValid = false;
     }
@@ -58,7 +61,7 @@ error.style.display = "none";
         passwordValid = false;
     }
     console.log(valid);
-    if(firstNameValid == true && lastNameValid == true && emailValid == true && passwordValid == true){
+    if(firstNameValid == true && lastNameValid == true && emailValid == true && passwordValid == true && firstNameValidError == true && lastNameValidError == true){
         console.log("Clicked");
         addCustomer(); 
     }
@@ -66,8 +69,9 @@ error.style.display = "none";
 
 firstName.addEventListener("keyup", function () {
     //console.log(firstName.value);
+   firstNameValidError = true;
     if (firstName.value != "" && firstName.value.length > 20) {
-       
+        firstNameValidError = false;
         firstNameError.innerText = "First Name cannot exceed 20 characters";
         return;
     }
@@ -89,9 +93,10 @@ firstName.addEventListener("keyup", function () {
 });
 lastName.addEventListener("keyup", function () {
     //console.log(firstName.value);
+    lastNameValidError = true;
     if (lastName.value != "" && lastName.value.length > 20) {
         
-       
+        lastNameValidError = false;
         lastNameError.innerText = "Last Name cannot exceed 20 characters";
         return;
     }
@@ -142,7 +147,7 @@ async function addCustomer() {
         clearFormData();
         success.style.display = "block";
         success.innerText = "Customer Added Successfully";
-        //window.location.href = "login.html"
+        window.location.href = "login.html"
     }
     catch (err) {
         error.style.display = "block";
