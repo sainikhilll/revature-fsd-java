@@ -11,20 +11,24 @@ async function checkLogin() {
 
     try {
         let response = await fetch("http://localhost:8080/bank-app-rest/customers/"+email+"/"+password);
-        let data =  await response.json();
-        if (response.status == 401){
+        //let data =  await response.json();
+        
+        if (response.status == 200){
             console.log("Login successfyul");
             window.location.href = "Accounts.html";
         }
-        if(response.status == 500){
+        else if(response.status == "401"){
             console.log("Login failed");
             error.style.display = "block";
-            alert("failed");
             error.innerText = "Enter Correct Credentials";
+        }
+       else  if(response.status == "404"){
+            error.style.display = "block";
+            error.innerText = "Enter E-mail and Password";
         }
     }
     catch(err) {
          error.style.display = "block";
-         error.innerText = "Enter Correct credentials"
+         error.innerText = "Server is facing an issue. Try after sometime. Sorry For Inconvenience";
     }
 } 
