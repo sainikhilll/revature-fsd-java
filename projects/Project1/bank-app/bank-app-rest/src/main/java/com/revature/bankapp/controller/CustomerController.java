@@ -43,7 +43,7 @@ public class CustomerController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response get(@PathParam("email") String email, @PathParam("password") String password) {
 		LOGGER.info("Start");
-		Customer customer = new Customer();
+		Customer customer = null;
 		try {
 			customer = dao.getCustomerByEmail(email);
 			if (customer == null) {
