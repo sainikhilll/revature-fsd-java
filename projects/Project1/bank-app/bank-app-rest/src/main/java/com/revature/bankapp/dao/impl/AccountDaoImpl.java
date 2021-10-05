@@ -7,13 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.revature.bankapp.dao.AccountDao;
 import com.revature.bankapp.dao.Util;
+import com.revature.bankapp.exception.AppException;
 import com.revature.bankapp.model.Account;
 //import com.revature.bankapp.model.DatabaseManager;
 
 public class AccountDaoImpl implements AccountDao {
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerDaoImpl.class);
 	@Override
 	public void create(Account account, long cust_id) throws SQLException {
 		try (Connection connection = Util.getConnection()) {
@@ -29,11 +33,12 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	@Override
-	public List<Account> showAccounts() throws SQLException {
+	public List<Account> showAccounts(long cust) throws AppException {
+		LOGGER.info("Show Accounts called");
 		List<Account> accountList = new ArrayList<>();
 		try(Connection connection = Util.getConnection()){
 		//	long cust = DatabaseManager.getCurrentCustomer().getId();
-			long cust = 0;
+			
 			String sql = "select account_id, balance from account  where cust_id=(?) and approved = 'y'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, (int)cust);
@@ -46,6 +51,9 @@ public class AccountDaoImpl implements AccountDao {
 				
 				accountList.add(account);
 			}
+		}catch(SQLException e) {
+			LOGGER.error("Getting Customer Details",e);
+			throw new AppException(e);
 		}
 		return accountList;
 	}
