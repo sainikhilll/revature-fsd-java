@@ -26,26 +26,26 @@ error.style.display = "none";
     if (firstName.value == "" ) {
         
         firstNameError.innerText = "First name is required";
-        firstNamevalid=false;
+        firstNameValid=false;
         return;
         
     }
    else if(!firstName.value.match( /^[A-Za-z]+$/)){
          
         firstNameError.innerText = "Numbers cannot be included in name";
-        firstNamevalid=false;
+        firstNameValid=false;
         return;
     }
     if (lastName.value == "" ) {
         
         lastNameError.innerText = "Last name is required";
-        lastNamevalid=false;
+        lastNameValid=false;
         return;
     }
     else if(!lastName.value.match( /^[A-Za-z]+$/)){
          
         lastNameError.innerText = "Numbers and Special Charcters can not be included in Lastname";
-        lastNamevalid=false;
+        lastNameValid=false;
         return;
     }
     if(email.value == ""){

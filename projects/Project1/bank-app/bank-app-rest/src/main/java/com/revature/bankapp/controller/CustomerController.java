@@ -26,7 +26,15 @@ import com.revature.bankapp.model.Customer;
 public class CustomerController {
 	@Context
 	private HttpServletRequest httpServletRequest;
-	@Context
+	private static Customer currentCustomer;
+	public static Customer getCurrentCustomer() {
+		return currentCustomer;
+	}
+
+	public static void setCurrentCustomer(Customer currentCustomer) {
+		CustomerController.currentCustomer = currentCustomer;
+	}
+
 	private HttpServletResponse httpServletResponse;
 	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
 	private CustomerDao dao = new CustomerDaoImpl();
@@ -48,7 +56,7 @@ public class CustomerController {
 	@GET
 	@Path("/{email}/{password}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response get(@PathParam("email") String email, @PathParam("password") String password) {
+	public Response get(@PathParam("email") String email, @PathParam("password") String password, @Context HttpServletRequest request) {
 		LOGGER.info("Start");
 		Customer customer = null;
 		try {
@@ -61,15 +69,17 @@ public class CustomerController {
 
 				LOGGER.info("Login Successful");
 				LOGGER.debug("{}", customer);
-				httpServletRequest.getSession().setAttribute("customer", customer);
-				System.out.println(httpServletRequest.getSession().getAttribute("customer"));
-				
-				try {
-					httpServletResponse.getWriter().write("Session Working");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CustomerController.setCurrentCustomer(customer);
+				request.getSession().setAttribute("customer", customer);
+				LOGGER.debug("{}",request.getSession().getId());
+				//System.out.println(httpServletRequest.getSession().getAttribute("customer"));
+//				
+//				try {
+//					httpServletResponse.getWriter().write("Session Working");
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 				return Response.ok().build();
 
 			} else {

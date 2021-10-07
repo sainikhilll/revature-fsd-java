@@ -19,15 +19,19 @@ import com.revature.bankapp.model.Account;
 public class AccountDaoImpl implements AccountDao {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerDaoImpl.class);
 	@Override
-	public void create(Account account, long cust_id) throws SQLException {
+	public void create(Account account, long cust_id) throws AppException {
 		try (Connection connection = Util.getConnection()) {
-			String sql = "INSERT INTO account (cust_id, name, balance, approved) VALUES (?,?,?,'n')";
+			String sql = "INSERT INTO account (cust_id, name, balance, approved) VALUES (?,?,?,'y')";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, (int)cust_id);
 			preparedStatement.setString(2, account.getName());
 			preparedStatement.setInt(3, (int)account.getBalance());
 			preparedStatement.executeUpdate();
 
+		}
+		catch(SQLException e){
+			LOGGER.error("Inserting account details");
+			throw new AppException(e);
 		}
 
 	}

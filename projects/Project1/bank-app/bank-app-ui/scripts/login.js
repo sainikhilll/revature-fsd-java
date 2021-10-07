@@ -16,6 +16,7 @@ async function checkLogin() {
         if (response.status == 200){
             console.log("Login successfyul");
             window.location.href = "Accounts.html";
+        
         }
         else if(response.status == "401"){
             console.log("Login failed");
