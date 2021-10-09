@@ -4,6 +4,7 @@ public class Transaction {
 	private long id;
 	private String type;
 	private long money;
+	private long accountId;
 	public String getType() {
 		return type;
 	}
@@ -22,6 +23,12 @@ public class Transaction {
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public long getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(long accountId) {
+		this.accountId = accountId;
 	}
 	@Override
 	public String toString() {

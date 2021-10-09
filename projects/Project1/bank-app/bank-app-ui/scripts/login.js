@@ -8,7 +8,9 @@ submitBtn.addEventListener("click", function () { checkLogin(); });
 async function checkLogin() {
     let email = form.email.value;
     let password = form.password.value;
-
+    // var options ={
+    //     credentials : 'include'
+    // };
     try {
         let response = await fetch("http://localhost:8080/bank-app-rest/customers/"+email+"/"+password);
         //let data =  await response.json();

@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.revature.bankapp.dao.EmployeeDao;
 import com.revature.bankapp.dao.Util;
+import com.revature.bankapp.exception.AppException;
 import com.revature.bankapp.model.Account;
 import com.revature.bankapp.model.Customer;
 import com.revature.bankapp.model.Transaction;
@@ -16,7 +17,7 @@ import com.revature.bankapp.model.Transaction;
 public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
-	public List<Customer> showCustomerList() throws SQLException {
+	public List<Customer> showCustomerList() throws AppException {
 		List<Customer> custList = new ArrayList<>();
 		try (Connection connection = Util.getConnection()) {
 			String sql = "select c.customer_id , c.first_name, c.last_name, a.account_id ,a.balance from customer c inner join account a where c.customer_id = a.cust_id";
@@ -37,12 +38,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				custList.add(customer);
 
 			}
+		}catch(SQLException e) {
+			
+			throw new AppException(e);
 		}
 		return custList;
 	}
 
 	@Override
-	public List<Transaction> showTransList(long accountId) throws SQLException {
+	public List<Transaction> showTransList(long accountId) throws AppException {
 		List<Transaction> transList = new ArrayList<>();
 		try (Connection connection = Util.getConnection()) {
 			String sql = "select transaction_id,transaction_type,amount from transaction where account_id = ?";
@@ -58,6 +62,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 				transList.add(transaction);
 			}
+		}catch(SQLException e) {
+			throw new AppException(e);
 		}
 		return transList;
 	}

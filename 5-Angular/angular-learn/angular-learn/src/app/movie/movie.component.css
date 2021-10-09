@@ -53,3 +53,7 @@
     float: right;
     cursor: pointer;
   }
+  .movie-year {
+    color: darkgray;
+    font-size: 12px
+}

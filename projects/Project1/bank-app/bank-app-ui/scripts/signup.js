@@ -126,7 +126,7 @@ password.addEventListener("keyup", function(){
         passwordError.innerText = "";
         return;
     }
-})
+});
 
 async function addCustomer() {
     let customer = {
