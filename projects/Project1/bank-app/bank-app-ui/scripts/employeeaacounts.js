@@ -10,7 +10,7 @@ async function getCustomerAccounts() {
     <td>${customer.firstName}</td>
     <td>${customer.lastName}</td>
     <td>${customer.account.accountId}</td>
-    <td><a href="transactions.html?id=${customer.account.accountId}" >Transactions</a></td>
+    <td><a href="employeetransactions.html?id=${customer.account.accountId}" >Transactions</a></td>
   </tr>`
     }
     document.getElementById("cust").innerHTML = element;
