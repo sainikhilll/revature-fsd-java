@@ -1,6 +1,6 @@
-# BANKING_OPERATIONS_UI_APP
+# BANK_APP
 ## Project Description
-The Bank app is a web-based application that simulates banking operations. A customer can apply for an account, view their balance, and make withdrawals and deposits. An employee can aprove or deny accounts and view account balances for their customers. 
+The Bank app is a web-based application that simulates banking operations. A customer can apply for an account, view their balance, and make withdrawals and deposits. An employee can view accounts and view account transactions for their customers. 
 ### User Stories 
 
 
@@ -20,6 +20,7 @@ The Bank app is a web-based application that simulates banking operations. A cus
 * As the system, I reject invalid transactions.
     * Ex: * A withdrawal that would result in a negative balance.
           * A deposit or withdrawal of negative money.
+* As an customer, I can view transactions of specific account. 
 * As an employee, I can view a customer's bank accounts.
 * As an employee, I can view transactions of specific account. 
 * As an employee, I can view a log of all transactions.
