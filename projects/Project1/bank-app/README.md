@@ -17,7 +17,7 @@ The Bank app is a web-based application that simulates banking operations. A cus
 * As a customer, I can view the balance of a specific account. 
 * As a customer, I can make a withdrawal or deposit to a specific account. 
 * As the system, I reject invalid transactions.
-    * Ex: A withdrawal that would result in a negative balance.
+    * Ex: A withdrawal that would result in a negative balance,
           A deposit or withdrawal of negative money.
 * As an customer, I can view transactions of specific account. 
 * As an employee, I can view a customer's bank accounts.
