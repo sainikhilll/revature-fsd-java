@@ -1,12 +1,11 @@
 # BANK_APP
 ## Project Description
 The Bank app is a web-based application that simulates banking operations. A customer can apply for an account, view their balance, and make withdrawals and deposits. An employee can view accounts and view account transactions for their customers. 
-### User Stories 
 
 
 ## Technologies Used
 * Java version 8
-* Mysql
+* MySQL
 * REST
 * JDBC
 * HTML, CSS 
@@ -18,12 +17,12 @@ The Bank app is a web-based application that simulates banking operations. A cus
 * As a customer, I can view the balance of a specific account. 
 * As a customer, I can make a withdrawal or deposit to a specific account. 
 * As the system, I reject invalid transactions.
-    * Ex: * A withdrawal that would result in a negative balance.
-          * A deposit or withdrawal of negative money.
+    * Ex: A withdrawal that would result in a negative balance.
+          A deposit or withdrawal of negative money.
 * As an customer, I can view transactions of specific account. 
 * As an employee, I can view a customer's bank accounts.
 * As an employee, I can view transactions of specific account. 
-* As an employee, I can view a log of all transactions.
+* As an user, I can logout.
 
 To-do list:
 * Transafer of money from one account to another account.
