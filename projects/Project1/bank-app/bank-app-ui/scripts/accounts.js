@@ -3,7 +3,7 @@ async function getAccounts() {
     credentials: 'include'
   };
   try{
-  let response = await fetch("http://localhost:8080/bank-app-rest/accounts");
+  let response = await fetch("http://localhost:8080/bank-app-rest/accounts",options);
   let accounts = await response.json();
   console.log("Method Executed");
   console.log(accounts);

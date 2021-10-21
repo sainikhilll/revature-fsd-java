@@ -34,9 +34,9 @@ public class AccountController {
 		LOGGER.debug("{}",request.getSession().getId());
 
 		LOGGER.info("GetAccounts Method Called");
-		//Customer customer = (Customer) request.getSession().getAttribute("customer");
+		Customer customer = (Customer) request.getSession().getAttribute("customer");
 		//System.out.println(httpServletRequest.getSession().getAttributeNames());
-		Customer customer = CustomerController.getCurrentCustomer();
+		//Customer customer = CustomerController.getCurrentCustomer();
 		LOGGER.debug("{}",customer);
 		try {
 			ArrayList<Account> accountList = (ArrayList<Account>) dao.showAccounts(customer.getId());

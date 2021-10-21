@@ -6,13 +6,19 @@ error.style.display = "none";
 submitBtn.addEventListener("click", function () { checkLogin(); });
 
 async function checkLogin() {
-    let email = form.email.value;
-    let password = form.password.value;
+    let cred ={
+    email : form.email.value,
+    passowrd : form.password.value
+};
+console.log(cred);
     var options ={
-        credentials : 'include'
+        method : "POST",
+        credentials : 'include',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(cred)
     };
     try {
-        let response = await fetch("http://localhost:8080/bank-app-rest/customers/"+email+"/"+password);
+        let response = await fetch("http://localhost:8080/bank-app-rest/authenticate",options);
         //let data =  await response.json();
         
         if (response.status == 200){

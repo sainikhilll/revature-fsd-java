@@ -74,6 +74,7 @@ async function createAccount() {
     var options = {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
+        credentials: 'include',
         body: JSON.stringify(account)
     };
     try{

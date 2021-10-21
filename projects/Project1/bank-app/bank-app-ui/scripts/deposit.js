@@ -49,13 +49,14 @@ async function performDeposit() {
 
     var options = {
         method: 'PUT',
+        credentials: 'include',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(depositDetails)
     };
     try {
         let response = await fetch("http://localhost:8080/bank-app-rest/transactions/deposit", options);
 
-        if (response.status == 200){
+        if (response.status == 200) {
             successMessage.style.display = "Block";
             errorMessage.style.display = "none";
             successMessage.innerText = "Deposit successfull."
@@ -68,6 +69,6 @@ async function performDeposit() {
         errorMessage.innerText = "Server is facing issues. Try again later"
     }
 }
-function clearData(){
+function clearData() {
     amountEntered.value = " ";
 }

@@ -1,3 +1,5 @@
-<h1>Hello</h1>
-<app-movie></app-movie>
-<app-movie-list></app-movie-list>
+<strong>ng-learn app</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+<a routerLink="login" routerLinkActive="active-link">Login</a>&nbsp;
+<a *ngIf="authService.isLoggedIn" routerLink="band" routerLinkActive="active-link">band</a>&nbsp;
+<a *ngIf="authService.isLoggedIn" (click)="logout()">Logout</a>
+<router-outlet></router-outlet>
